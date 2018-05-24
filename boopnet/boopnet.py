@@ -34,8 +34,8 @@ def extract_from_pdf(pdf, destination=None):
     print("\nConverting {} to single-page PNGs.".format(pdf))
     imagemagick_commands = [
         "convert",
-        "-resize", "2000x",  # high res
-        "-density", "300x300",  # still high res
+        "-resize", "1500x",  # high res
+        "-density", "200x200",  # still high res
         "-quality", "100",  # no compression
         pdf,  # source
         "{}__page_%03d.png".format(filename)  # destination
@@ -73,8 +73,8 @@ def extract_from_pdf(pdf, destination=None):
             print("  No floor plan found; continuing.")
 
         # Remove temporary PNG files of extracted PDF images
-        for temp_file in glob("{}__page_*.png".format(filename)):
-            call(["rm", temp_file])
+    for temp_file in glob("{}__page_*.png".format(filename)):
+        call(["rm", temp_file])
 
 def extract_all_from_directory(directory, destination=None):
     """

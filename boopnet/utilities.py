@@ -21,7 +21,7 @@ def preprocess(image):
     
     # Rescale image to 400x304 pixels
     original_size = image.shape
-    rescale_factor = (400/image.shape[0], 304/image.shape[1])
+    rescale_factor = (408/image.shape[0], 312/image.shape[1])
     image = transform.rescale(image, rescale_factor)
 
     # We don't like transparency
@@ -117,7 +117,7 @@ def segmentation_model():
     Loads the U-net model from HDF5 file into a compiled Keras model.
     """
     return load_model(
-    "boopnet.hdf5", 
+    "boopnet.hdf5",
     compile=True,
     custom_objects={
         "dice_coef": dice_coef, 
